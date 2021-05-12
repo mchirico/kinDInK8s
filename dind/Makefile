@@ -1,6 +1,6 @@
 VERSION ?= $(shell cat VERSION)
 
-IMG_REPO ?= piggybot
+IMG_REPO ?= mchirico
 IMG_TAG ?= $(VERSION)
 BASE_IMAGES ?= buster buster-golang centos7 centos7-golang
 
