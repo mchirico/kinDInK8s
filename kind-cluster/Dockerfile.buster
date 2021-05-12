@@ -1,4 +1,4 @@
-FROM piggybot/dind-buster:v0.1.8
+FROM mchirico/dind-buster:v0.1.8
 
 ARG KUBECTL_VERSION="v1.17.3"
 ARG KIND_VERSION="v0.10.0"
