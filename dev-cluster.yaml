@@ -4,7 +4,7 @@ metadata:
   name: dev-cluster
 spec:
   containers:
-  - image: piggybot/kind-cluster-buster:v0.1.0
+  - image: mchirico/kind-cluster-buster:v0.1.0
     imagePullPolicy: Always
     name: kind-cluster
     stdin: true
