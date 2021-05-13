@@ -34,6 +34,7 @@ cat <<EOF >> kind-config.yaml
 EOF
 done
 
-kind create cluster --config=kind-config.yaml  --wait=900s
+# TODO (mmc): hold off... still issues
+# kind create cluster --config=kind-config.yaml  --wait=900s
 
 exec "$@"
