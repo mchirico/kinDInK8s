@@ -21,9 +21,9 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/root/aw
     unzip awscliv2.zip && \
     ./aws/install
 
-RUN curl "https://github.com/ahmetb/kubectx/releases/download/v0.9.3/kubectx" -o /usr/local/bin/kubectx && \
+RUN curl -Lso /usr/local/bin/kubectx  "https://github.com/ahmetb/kubectx/releases/download/v0.9.3/kubectx"  && \
     chmod +x /usr/local/bin/kubectx && \
-    curl "https://github.com/ahmetb/kubectx/releases/download/v0.9.3/kubens" -o /usr/local/bin/kubens && \
+    curl -Lso /usr/local/bin/kubens "https://github.com/ahmetb/kubectx/releases/download/v0.9.3/kubens"  && \
     chmod +x /usr/local/bin/kubens
 
 
