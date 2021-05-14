@@ -1,0 +1,34 @@
+FROM mchirico/dind-buster-gcp:v0.1.8
+
+ARG KUBECTL_VERSION="v1.17.3"
+ARG KIND_VERSION="v0.10.0"
+
+RUN curl -Lso /usr/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl" && \
+    chmod +x /usr/bin/kubectl && \
+    curl -Lso /usr/bin/kind "https://github.com/kubernetes-sigs/kind/releases/download/${KIND_VERSION}/kind-linux-amd64" && \
+    chmod +x /usr/bin/kind
+
+COPY kind-config.yaml /kind-config.yaml
+
+RUN curl -Lso /root/go1.16.4.linux-amd64.tar.gz "https://golang.org/dl/go1.16.4.linux-amd64.tar.gz" && \
+    tar -C /usr/local -xzf /root/go1.16.4.linux-amd64.tar.gz && \
+    rm /root/go1.16.4.linux-amd64.tar.gz
+
+COPY .bashrc /root/.bashrc
+
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/root/awscliv2.zip" && \
+    cd /root && \
+    unzip awscliv2.zip && \
+    ./aws/install
+
+RUN curl -Lso /usr/local/bin/kubectx  "https://github.com/ahmetb/kubectx/releases/download/v0.9.3/kubectx"  && \
+    chmod +x /usr/local/bin/kubectx && \
+    curl -Lso /usr/local/bin/kubens "https://github.com/ahmetb/kubectx/releases/download/v0.9.3/kubens"  && \
+    chmod +x /usr/local/bin/kubens
+
+
+
+EXPOSE 30001
+
+RUN mv /entrypoint.sh /entrypoint-original.sh
+COPY entrypoint-wrapper.sh /entrypoint.sh
