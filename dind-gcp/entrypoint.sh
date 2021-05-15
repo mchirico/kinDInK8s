@@ -63,7 +63,7 @@ fi
 setsid dockerd \
   --cgroup-parent="${CGROUP_PARENT}" \
   --bip="${DOCKERD_BIP:-172.17.1.1/24}" \
-  --mtu="${DOCKERD_MTU:-1200}" \
+  --mtu="${DOCKERD_MTU:-1330}" \
   --raw-logs \
   ${DOCKER_ARGS:-} >/var/log/docker/dockerd.log 2>&1 &
 
